@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Autobonplan - {% block title %}{% endblock %}</title>
+
+        {% block stylesheets %}
+            <link rel="stylesheet" type="text/css" href="{{ asset('style/main.css') }}">
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}{% endblock %}
+
+        {% block javascripts %}
+            <script src="{{ asset('script/script.js') }}"></script>
+            <script src="https://code.highcharts.com/highcharts.js"></script>
+            <script src="https://code.highcharts.com/modules/exporting.js"></script>
+            <script src="https://code.highcharts.com/modules/export-data.js"></script>
+            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        {% endblock %}
+    </body>
+</html>
+    </body>
+</html>

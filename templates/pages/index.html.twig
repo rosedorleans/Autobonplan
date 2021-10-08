@@ -1,0 +1,38 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Arrivage{% endblock %}
+
+{% block body %}
+
+    <div class="content">
+        <section class="main-header">
+            <div class="title"><h1>ARRIVAGE</h1></div>
+            <div class="user">
+                <img id="user_photo"src="https://img.icons8.com/ios/452/user--v1.png" alt="">
+                <div class="name"><span><span id="firstname"></span> <span id="lastname"></span></span> <a id="logout" href="/">Déconnection</a></div>
+            </div>
+        </section>
+        <section class="nav">
+            <div class="container-logo">
+                <img src="https://communication.autobonplan.com/abp-home/img/Logo_Autobonplan.png" alt="">
+            </div>
+            <ul>
+            </ul>
+        </section>
+        <div class="page-content">
+
+            <figure class="highcharts-figure">
+                <div id="container" style="width:100%; height:400px;"></div>
+                <p class="highcharts-description">
+                    Chart showing stacked columns with grouping, allowing specific series to
+                    be stacked on the same column. Stacking is often used to visualize
+                    data that accumulates to a sum.
+                </p>
+            </figure>
+            <img src="test_arrivages.jpg" alt="">
+
+        </div>
+    </div>
+
+{% endblock %}
