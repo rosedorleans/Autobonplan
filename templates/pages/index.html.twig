@@ -22,17 +22,39 @@
         </section>
         <div class="page-content">
 
-            <figure class="highcharts-figure">
-                <div id="container" style="width:100%; height:400px;"></div>
-                <p class="highcharts-description">
-                    Chart showing stacked columns with grouping, allowing specific series to
-                    be stacked on the same column. Stacking is often used to visualize
-                    data that accumulates to a sum.
-                </p>
-            </figure>
-            <img src="test_arrivages.jpg" alt="">
+                <figure class="highcharts-figure">
+                    <div id="container" style="width:100%; height:400px;"></div>
+                </figure>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Numéro d'arrivage</th>
+                            <th>Marque</th>
+                            <th>Modèle</th>
+                            <th>Energie</th>
+                            <th>Date de disponibilité</th>
+                            <th>Fournnisseur</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for voiture in voitures %}
+                        <tr>
+                            <td>{{ voiture.numArrivage }}</td>
+                            <td>{{ voiture.marque.nom }}</td>
+                            <td>{{ voiture.modele }}</td>
+                            <td>{{ voiture.energie }}</td>
+                            <td>{{ voiture.dateDispo|date('d/m/Y') }}</td>
+                            <td>{{ voiture.fournisseur }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tbody>
+                </table>
+
+
 
         </div>
+        <img src="{{ asset('test_arrivages.jpg') }}" alt="">
     </div>
 
 {% endblock %}
