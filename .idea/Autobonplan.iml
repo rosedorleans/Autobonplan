@@ -98,5 +98,7 @@
     <orderEntry type="library" name="highcharts" level="application" />
     <orderEntry type="library" name="exporting" level="application" />
     <orderEntry type="library" name="export-data" level="application" />
+    <orderEntry type="library" name="Chart.js" level="application" />
+    <orderEntry type="library" name="chart.js" level="application" />
   </component>
 </module>

@@ -2,15 +2,15 @@
 
 namespace App\Entity;
 
-use App\Repository\MarqueRepository;
+use App\Repository\EnergieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=MarqueRepository::class)
+ * @ORM\Entity(repositoryClass=EnergieRepository::class)
  */
-class Marque
+class Energie
 {
     /**
      * @ORM\Id
@@ -25,14 +25,9 @@ class Marque
     private $nom;
 
     /**
-     * @ORM\OneToMany(targetEntity=Voiture::class, mappedBy="marque")
+     * @ORM\OneToMany(targetEntity=Voiture::class, mappedBy="energie")
      */
     private $voitures;
-
-    /**
-     * @ORM\Column(type="string", length=7)
-     */
-    private $couleur;
 
     public function __construct()
     {
@@ -68,7 +63,7 @@ class Marque
     {
         if (!$this->voitures->contains($voiture)) {
             $this->voitures[] = $voiture;
-            $voiture->setMarque($this);
+            $voiture->setEnergie($this);
         }
 
         return $this;
@@ -78,22 +73,10 @@ class Marque
     {
         if ($this->voitures->removeElement($voiture)) {
             // set the owning side to null (unless already changed)
-            if ($voiture->getMarque() === $this) {
-                $voiture->setMarque(null);
+            if ($voiture->getEnergie() === $this) {
+                $voiture->setEnergie(null);
             }
         }
-
-        return $this;
-    }
-
-    public function getCouleur(): ?string
-    {
-        return $this->couleur;
-    }
-
-    public function setCouleur(string $couleur): self
-    {
-        $this->couleur = $couleur;
 
         return $this;
     }

@@ -39,14 +39,15 @@ class Voiture
     private $modele;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $energie;
-
-    /**
      * @ORM\Column(type="date")
      */
     private $dateDispo;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Energie::class, inversedBy="voitures")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $energie;
 
 
 
@@ -105,18 +106,6 @@ class Voiture
         return $this;
     }
 
-    public function getEnergie(): ?string
-    {
-        return $this->energie;
-    }
-
-    public function setEnergie(string $energie): self
-    {
-        $this->energie = $energie;
-
-        return $this;
-    }
-
     public function getDateDispo(): ?\DateTimeInterface
     {
         return $this->dateDispo;
@@ -125,6 +114,18 @@ class Voiture
     public function setDateDispo(\DateTimeInterface $dateDispo): self
     {
         $this->dateDispo = $dateDispo;
+
+        return $this;
+    }
+
+    public function getEnergie(): ?Energie
+    {
+        return $this->energie;
+    }
+
+    public function setEnergie(?Energie $energie): self
+    {
+        $this->energie = $energie;
 
         return $this;
     }

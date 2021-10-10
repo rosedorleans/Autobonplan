@@ -5,26 +5,9 @@
 
 {% block body %}
 
-    <div class="content">
-        <section class="main-header">
-            <div class="title"><h1>ARRIVAGE</h1></div>
-            <div class="user">
-                <img id="user_photo"src="https://img.icons8.com/ios/452/user--v1.png" alt="">
-                <div class="name"><span><span id="firstname"></span> <span id="lastname"></span></span> <a id="logout" href="/">Déconnection</a></div>
-            </div>
-        </section>
-        <section class="nav">
-            <div class="container-logo">
-                <img src="https://communication.autobonplan.com/abp-home/img/Logo_Autobonplan.png" alt="">
-            </div>
-            <ul>
-            </ul>
-        </section>
-        <div class="page-content">
-
-                <figure class="highcharts-figure">
-                    <div id="container" style="width:100%; height:400px;"></div>
-                </figure>
+                <div>
+                    <canvas id="myChart"></canvas>
+                </div>
                 <table>
                     <thead>
                         <tr>
@@ -43,7 +26,7 @@
                             <td>{{ voiture.numArrivage }}</td>
                             <td>{{ voiture.marque.nom }}</td>
                             <td>{{ voiture.modele }}</td>
-                            <td>{{ voiture.energie }}</td>
+                            <td>{{ voiture.energie.nom }}</td>
                             <td>{{ voiture.dateDispo|date('d/m/Y') }}</td>
                             <td>{{ voiture.fournisseur }}</td>
                         </tr>
@@ -51,10 +34,37 @@
                     <tbody>
                 </table>
 
+{% endblock %}
 
+{% block javascripts %}
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>let myChart = new Chart(
+            document.getElementById('myChart'),
+            config = {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                        'Janvier',
+                    ],
+                    datasets: [{
+                        label: 'My First dataset',
+                        backgroundColor: {{ voituresColor|raw }},
+                        data: [1, 3, 5, 7, 2, 9, 5, 10],
+                    }]
+                },
 
-        </div>
-        <img src="{{ asset('test_arrivages.jpg') }}" alt="">
-    </div>
-
+                options: {}
+            }
+        );</script>
 {% endblock %}

@@ -4,23 +4,64 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Autobonplan - {% block title %}{% endblock %}</title>
+        <title>Autobonplan | {% block title %}{% endblock %}</title>
 
         {% block stylesheets %}
             <link rel="stylesheet" type="text/css" href="{{ asset('style/main.css') }}">
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="content">
+            <section class="main-header">
+                <div class="title">
+                    <h1>ARRIVAGE</h1>
+                </div>
+                <div class="user">
+                    {% if app.user %}
+                        <img id="user_photo" src="https://img.icons8.com/ios/452/user--v1.png" alt="">
+                        <div class="name">
+                            <span>
+                                <span id="firstname">{{ app.user.prenom }}</span>
+                                <span id="lastname">{{ app.user.nom }}</span>
+                            </span>
+                        </div>
+                        <ul>
+        {#                      <li><a href="{{ path('mon-compte') }}">Mon Compte</a></li>#}
+                                <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                            {% else %}
+                            <div class="user-menu flex">
+                                <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                                <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                            </div>
+                        </ul>
+                    {% endif %}
+                </div>
+            </section>
+            <section class="nav">
+                <div class="container-logo">
+                    <a href="{{ path('index') }}">
+                        <img src="https://communication.autobonplan.com/abp-home/img/Logo_Autobonplan.png" alt="">
+                    </a>
+                </div>
+                <ul>
+                    <li><a href="{{ path('index') }}">Accueil</a></li>
+                    {% if app.user %}
+    {#                    <li><a href="{{ path('mon-compte') }}">Mon Compte</a></li>#}
+                        <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+                    {% else %}
+                        <li><a href="{{ path('app_login') }}">Se connecter</a></li>
+                        <li><a href="{{ path('app_register') }}">S'inscrire</a></li>
+                {% endif %}
+                </ul>
+            </section>
+            <div class="page-content">
 
-        {% block javascripts %}
-            <script src="{{ asset('script/script.js') }}"></script>
-            <script src="https://code.highcharts.com/highcharts.js"></script>
-            <script src="https://code.highcharts.com/modules/exporting.js"></script>
-            <script src="https://code.highcharts.com/modules/export-data.js"></script>
-            <script src="https://code.highcharts.com/modules/accessibility.js"></script>
-        {% endblock %}
+            {% block body %}{% endblock %}
+
+            </div>
+        </div>
+
+        {% block javascripts %}{% endblock %}
     </body>
 </html>
-    </body>
-</html>
+

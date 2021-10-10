@@ -19,6 +19,18 @@ class VoitureRepository extends ServiceEntityRepository
         parent::__construct($registry, Voiture::class);
     }
 
+    /**
+     * @return void
+     */
+    public function countByMonth() {
+        $query = $this->createQueryBuilder('voiture')
+            ->select('SUBSTRING(voiture.dateDispo, 1, 7) as dateVoitures, COUNT(voiture) as count')
+            ->groupBy('dateVoitures');
+
+        return $query->getQuery()->getResult();
+    }
+
+
     // /**
     //  * @return Voiture[] Returns an array of Voiture objects
     //  */
