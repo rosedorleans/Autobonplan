@@ -30,6 +30,18 @@ class VoitureRepository extends ServiceEntityRepository
         return $query->getQuery()->getResult();
     }
 
+    /**
+     * @return void
+     */
+    public function countByMarque() {
+        $query = $this->createQueryBuilder('voiture')
+            ->select('(voiture.marque) as marqueVoiture, COUNT(voiture) as count')
+            ->groupBy('marqueVoiture');
+
+        return $query->getQuery()->getResult();
+    }
+
+
 
     // /**
     //  * @return Voiture[] Returns an array of Voiture objects

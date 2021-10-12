@@ -7,6 +7,7 @@
 
                 <div>
                     <canvas id="myChart"></canvas>
+                    {{ dump() }}
                 </div>
                 <table>
                     <thead>
@@ -43,28 +44,31 @@
             config = {
                 type: 'bar',
                 data: {
-                    labels: [
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                        'Janvier',
-                    ],
-                    datasets: [{
-                        label: 'My First dataset',
-                        backgroundColor: {{ voituresColor|raw }},
-                        data: [1, 3, 5, 7, 2, 9, 5, 10],
-                    }]
+                    labels: {{ dates|raw }},
+                    datasets: [
+                        {
+{#                    {% for marque in marques %}#}
+                            label: 'voiture',
+                            backgroundColor: '#000',
+                            data: {{ voitureCount|raw }},
+                        },
+{#                    {% endfor %}#}
+                    ]
                 },
-
-                options: {}
+                options: {
+                    responsive: true,
+                    interaction: {
+                        intersect: false,
+                    },
+                    scales: {
+                        x: {
+                            stacked: true,
+                        },
+                        y: {
+                            stacked: true
+                        }
+                    }
+                }
             }
         );</script>
 {% endblock %}

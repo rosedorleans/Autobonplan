@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=MarqueRepository::class)
  */
-class Marque
+class Marque implements \Countable
 {
     /**
      * @ORM\Id
@@ -96,5 +96,10 @@ class Marque
         $this->couleur = $couleur;
 
         return $this;
+    }
+
+    public function count()
+    {
+        // TODO: Implement count() method.
     }
 }
