@@ -20,7 +20,7 @@ class VoitureRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return void
+     *
      */
     public function countByMonth() {
         $query = $this->createQueryBuilder('voiture')

@@ -15,13 +15,15 @@ class HomeController extends AbstractController
      */
     public function index(VoitureRepository $voitureRepository, MarqueRepository $marqueRepository): Response
     {
+
         // Recuperer toutes les données des voitures et des marques
         $voitures = $voitureRepository->findAll();
         $marques = $marqueRepository->findAll();
+        $count = count($voitures);
 
         // Creer des tableaux pour classer les données
         $marqueColor = [];
-        $marqueCount = [];
+        $voitureParMarque = [];
         $voitureCount = [];
         $dates = [];
 
@@ -29,7 +31,7 @@ class HomeController extends AbstractController
         foreach ($marques as $marque) {
             $marquesNom[] = $marque->getNom();
             $marqueColor[] = $marque->getCouleur();
-            $marqueCount[] = count($marque->getVoitures());
+            $countVoitureParMarque[] = count($marque->getVoitures());
         }
 
         // Classer les voitures par date (mois et année)
@@ -55,9 +57,11 @@ class HomeController extends AbstractController
             'marquesNom' => $marquesNom,
 //            'marqueParVoiture' => json_encode($marquesParVoiture),
 //            'marquesCount' => json_encode($marquesCount),
+            'countVoitureParMarque' => $countVoitureParMarque,
             'marqueColor' => json_encode($marqueColor),
             'voitureCount' => json_encode($voitureCount),
             'dates' => json_encode($dates),
+            'count' => $count,
 
         ]);
     }

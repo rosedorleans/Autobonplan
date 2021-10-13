@@ -131,6 +131,10 @@ img{
     background-color: #e3dbe0;
 }
 
+.nav ul li #admin {
+    padding: 15px;
+}
+
 .nav ul li span{
     margin: auto;
 }

@@ -48,6 +48,11 @@
                     {% if app.user %}
     {#                    <li><a href="{{ path('mon-compte') }}">Mon Compte</a></li>#}
                         <li><a href="{{ path('app_logout') }}">Se déconnecter</a></li>
+
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li><a id="admin" href="{{ path('add_voiture') }}">Ajouter des voitures</a></li>
+
+                        {% endif %}
                     {% else %}
                         <li><a href="{{ path('app_login') }}">Se connecter</a></li>
                         <li><a href="{{ path('app_register') }}">S'inscrire</a></li>

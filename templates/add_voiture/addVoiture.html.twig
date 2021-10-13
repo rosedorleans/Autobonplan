@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AddVoitureController!{% endblock %}
+
+{% block body %}
+    <div>
+        {% for status, messages in app.flashes %}
+            {% for message in messages %}
+                <div class="alert alert-{{ status }} alert-dismissible fade show" role="alert">
+                    <strong>
+                        {{ message }}
+                    </strong>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            {% endfor %}
+        {% endfor %}
+        <p>Il y a {{ count }} voitures enregistrées.</p>
+        <h1>Ajouter une ou plusieurs voitures :</h1>
+        {{ form_start(addVoitureForm) }}
+        {{ form_row
+            (addVoitureForm.file_name,
+            {'attr': {'placeholder' : 'Veuillez choisir le fichier à importer'}} )
+        }}
+        <button type="submit">Valider</button>
+        {{ form_end(addVoitureForm) }}
+    </div>
+{% endblock %}
