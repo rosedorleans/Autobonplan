@@ -47,12 +47,12 @@
                     labels: {{ dates|raw }},
                     datasets: [
                         {
-{#                    {% for marque in marques %}#}
-                            label: 'voiture',
+                    {% for marque in marques %}
+                            label: {{ marque.nom }},
                             backgroundColor: '#000',
                             data: {{ voitureCount|raw }},
                         },
-{#                    {% endfor %}#}
+                    {% endfor %}
                     ]
                 },
                 options: {
