@@ -4,37 +4,37 @@
 {% block title %}Arrivage{% endblock %}
 
 {% block body %}
-                <p>Il y a {{ count }} voitures enregistrées.</p>
-                <div>
-                    <canvas id="myChart"></canvas>
-                    {{ dump() }}
-                </div>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Numéro d'arrivage</th>
-                            <th>Marque</th>
-                            <th>Modèle</th>
-                            <th>Energie</th>
-                            <th>Date de disponibilité</th>
-                            <th>Fournnisseur</th>
 
-                        </tr>
-                    </thead>
-                    <tbody>
-                    {% for voiture in voitures %}
-                        <tr>
-                            <td>{{ voiture.numArrivage }}</td>
-                            <td>{{ voiture.marque.nom }}</td>
-                            <td>{{ voiture.modele }}</td>
-                            <td>{{ voiture.energie.nom }}</td>
-                            <td>{{ voiture.dateDispo|date('d/m/Y') }}</td>
-                            <td>{{ voiture.fournisseur }}</td>
-                        </tr>
-                    {% endfor %}
-                    <tbody>
-                </table>
-
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <div class="table-responsive" id="table">
+        <p>Il y a {{ count }} voitures enregistrées.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Numéro d'arrivage</th>
+                    <th>Marque</th>
+                    <th>Modèle</th>
+                    <th>Energie</th>
+                    <th>Date de disponibilité</th>
+                    <th>Fournnisseur</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for voiture in voitures %}
+                <tr>
+                    <td>{{ voiture.numArrivage }}</td>
+                    <td>{{ voiture.marque.nom }}</td>
+                    <td>{{ voiture.modele }}</td>
+                    <td>{{ voiture.energie.nom }}</td>
+                    <td>{{ voiture.dateDispo|date('d/m/Y') }}</td>
+                    <td>{{ voiture.fournisseur }}</td>
+                </tr>
+            {% endfor %}
+            <tbody>
+        </table>
+    </div>
 {% endblock %}
 
 {% block javascripts %}
@@ -47,12 +47,12 @@
                     labels: {{ dates|raw }},
                     datasets: [
                         {
-                    {% for marque in marques %}
-                            label: {{ marque.nom }},
-                            backgroundColor: '#000',
+{#                    {% for marque in marques %}#}
+                            label: 'voitures',
+                            backgroundColor: '#0f5f9a',
                             data: {{ voitureCount|raw }},
                         },
-                    {% endfor %}
+{#                    {% endfor %}#}
                     ]
                 },
                 options: {

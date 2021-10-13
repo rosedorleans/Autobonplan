@@ -43,6 +43,8 @@ class HomeController extends AbstractController
             $dates[] = $voiture['dateVoitures'];
         }
 
+
+
 //        $voitureParMarque = $voitureRepository->countByMarque();
 //
 //        foreach ($voitureParMarque as $marque) {

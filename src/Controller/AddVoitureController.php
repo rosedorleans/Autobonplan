@@ -73,7 +73,7 @@ class AddVoitureController extends AbstractController
                 } catch (FileException $e) {
                     throw new FileException('Problème d\'ouverture du fichier');
                 }
-                $this->addFlash('success', 'Voiture(s) ajoutée(s) avec succès (' . $count . ')');
+                $this->addFlash('success', 'Voiture(s) ajoutée(s) avec succès !');
             } return $this->redirectToRoute('add_voiture');
         }
 
