@@ -28,12 +28,13 @@
         "symfony/yaml": "4.4.*",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/intl-extra": "^3.3",
-        "twig/twig": "^2.12|^3.0"
-    },
-    "require-dev": {
+        "twig/twig": "^2.12|^3.0",
+        "ext-mongodb": "*",
         "symfony/debug-bundle": "4.4.*",
         "symfony/stopwatch": "4.4.*",
         "symfony/web-profiler-bundle": "4.4.*"
+    },
+    "require-dev": {
     },
     "config": {
         "preferred-install": {
@@ -65,7 +66,6 @@
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
         "post-install-cmd": [
-            "@auto-scripts"
         ],
         "post-update-cmd": [
             "@auto-scripts"
